@@ -3,6 +3,7 @@ package com.example.learnForAll.tableapi.tableapi;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -19,6 +20,6 @@ public class GoodsData implements Serializable {
     //商品价格
     private Integer price;
     //购买时间
-    private Date buyTime;
+    private Timestamp buyTime;
 
 }
