@@ -14,6 +14,7 @@ import org.apache.flink.table.api.Tumble;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 import org.apache.flink.table.types.AbstractDataType;
 import org.apache.flink.table.types.DataType;
+import org.apache.flink.types.Row;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Timestamp;
@@ -63,7 +64,7 @@ public class TableApiSchemeTest {
                 .column("goodsId", "BIGINT")
                 .column("goodsName", "STRING")
                 .column("price", "INT")
-                .watermark("buyTime", "buyTime - INTERVAL '10' SECOND")
+                .watermark("buyTime", "buyTime - INTERVAL '10' HOUR")
                 .build());
 
         //todo 输出表scheme
@@ -72,12 +73,12 @@ public class TableApiSchemeTest {
 
         //todo 使用TableAPI对动态表操作
         Table resultTable = sensorTable
-                .window(Tumble.over(lit(5).second()).on($("buyTime")).as("w"))
+                .window(Tumble.over(lit(10).hour()).on($("buyTime")).as("w"))
                 .groupBy($("w"), $("goodsName"))
-                .select($("goodsName"), $("price").sum().as("priceSum"));
+                .select($("goodsName"), $("price").count().as("priceSum"));
 
         //todo 将动态表转换成流
-        DataStream<QueryResult> resultDS = tableEnv.toDataStream(resultTable, QueryResult.class);
+        DataStream<Row> resultDS = tableEnv.toDataStream(resultTable);
         //todo 打印
         resultDS.print();
         //todo 执行
