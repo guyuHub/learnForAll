@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+
+  jobmanager:
+    image: flink:1.15.1
+    environment:
+      FLINK_PROPERTIES: |
+        jobmanager.rpc.address: jobmanager
+    ports:
+      - 8081:8081
+    command: jobmanager
+    volumes:
+      - jobmanager:/flink/jobmanager
+    networks:
+      - flink
+  taskmanager:
+    image: flink:1.15.1
+    depends_on:
+      - jobmanager
+    environment:
+      FLINK_PROPERTIES: |
+        jobmanager.rpc.address: jobmanager
+        taskmanager.numberOfTaskSlots: 2
+    command: taskmanager
+    scale: 1
+    volumes:
+      - taskmanager:/flink/taskmanager
+    networks:
+      - flink
+
+networks:
+  flink:
+    driver: bridge
+
+volumes:
+  jobmanager:
+  taskmanager:
