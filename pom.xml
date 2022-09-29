@@ -6,6 +6,7 @@
     <modules>
         <module>flink-learn</module>
         <module>core</module>
+        <module>kafka-learn</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -83,6 +84,11 @@
             <version>1.15.1</version>
             <scope>provided</scope>
         </dependency>-->
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest-all_2.11</artifactId>
+            <version>3.0.0-M11</version>
+        </dependency>
     </dependencies>
 
 </project>
