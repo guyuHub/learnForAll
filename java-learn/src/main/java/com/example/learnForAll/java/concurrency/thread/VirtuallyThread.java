@@ -1,9 +1,8 @@
 package com.example.learnForAll.java.concurrency.thread;
 
-import java.util.ArrayDeque;
-import java.util.HashMap;
-import java.util.PriorityQueue;
-import java.util.Vector;
+import java.nio.channels.FileChannel;
+import java.nio.channels.Selector;
+import java.util.*;
 import java.util.concurrent.ArrayBlockingQueue;
 
 public class VirtuallyThread {
