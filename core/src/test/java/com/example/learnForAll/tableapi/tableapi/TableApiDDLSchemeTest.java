@@ -11,7 +11,7 @@ import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.Tumble;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 import org.apache.flink.table.types.DataType;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;

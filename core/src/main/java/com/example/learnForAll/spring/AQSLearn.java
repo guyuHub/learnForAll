@@ -3,8 +3,6 @@ package com.example.learnForAll.spring;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
-import sun.reflect.MethodAccessor;
-import sun.reflect.annotation.AnnotationParser;
 
 import java.io.ObjectInputStream;
 import java.io.Serializable;
